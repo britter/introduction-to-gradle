@@ -1,4 +1,7 @@
+import java.time.OffsetDateTime
+
 plugins {
+    id("com.gradle.build-scan") version "2.2.1"
     java
     id("com.gradle.introduction.build.TestConfigurationPlugin")
 }
@@ -27,4 +30,12 @@ dependencies {
 tasks.register<Zip>("zipSources") {
     archiveClassifier.set("src")
     from(sourceSets.main.get().allJava)
+}
+
+buildScan {
+    publishAlways()
+
+    tag("MY_TAG")
+    link("GitHub", "https://github.com/britter/introduction-to-gradle")
+    value("date", OffsetDateTime.now().toString())
 }
