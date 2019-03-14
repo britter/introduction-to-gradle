@@ -1,20 +1,18 @@
 plugins {
     java
-    application
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.1.3.RELEASE"))
     implementation("com.google.guava:guava:27.0.1-jre")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
     testImplementation("junit:junit:4.12")
-}
-
-application {
-    mainClassName = "com.gradle.simple.App"
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.register<Zip>("zipSources") {
