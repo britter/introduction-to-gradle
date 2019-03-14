@@ -1,10 +1,15 @@
 plugins {
     java
-    `integration-test`
+    id("com.gradle.introduction.build.TestConfigurationPlugin")
 }
 
 repositories {
     mavenCentral()
+}
+
+testConfigurations {
+    create("integration")
+    create("ui")
 }
 
 val integrationTestImplementation by configurations.getting
