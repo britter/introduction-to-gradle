@@ -16,3 +16,8 @@ dependencies {
 application {
     mainClassName = "com.gradle.simple.App"
 }
+
+tasks.register<Zip>("zipSources") {
+    archiveClassifier.set("src")
+    from(sourceSets.main.get().allJava)
+}
